@@ -29,13 +29,28 @@ public class ProductDetail extends Activity {
         buy = findViewById(R.id.buy);
 
 //        Intent intent = getIntent();
-//        final Products product = intent.getParcelableExtra("product");
+//        final Products product = (Products) intent.getSerializableExtra("product");
 //        pd_name.setText(product.getProduct_name());
 //        pd_minplayer.setText(String.valueOf(product.getMin_player()));
 //        pd_maxplayer.setText(String.valueOf(product.getMax_player()));
 //        pd_price.setText(String.valueOf(product.getPrice()));
 //        sisawallet = intent.getIntExtra("wallet", 0);
 //
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(ProductDetail.this, Map.class);
+                startActivity(intent);
+            }
+        });
+
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(ProductDetail.this, Profile.class);
+                startActivity(intent);
+            }
+        });
 //        buy.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

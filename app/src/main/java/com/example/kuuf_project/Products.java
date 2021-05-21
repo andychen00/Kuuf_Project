@@ -1,9 +1,8 @@
 package com.example.kuuf_project;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import java.io.Serializable;
 
-public class Products implements Parcelable {
+public class Products implements Serializable {
     private String product_name;
     private int min_player;
     private int max_player;
@@ -19,42 +18,6 @@ public class Products implements Parcelable {
         this.longitude = longitude;
         this.latitude = latitude;
     }
-
-    protected Products(Parcel in) {
-        product_name = in.readString();
-        min_player = in.readInt();
-        max_player = in.readInt();
-        price = in.readInt();
-        longitude = in.readDouble();
-        latitude = in.readDouble();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(product_name);
-        dest.writeInt(min_player);
-        dest.writeInt(max_player);
-        dest.writeInt(price);
-        dest.writeDouble(longitude);
-        dest.writeDouble(latitude);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<Products> CREATOR = new Creator<Products>() {
-        @Override
-        public Products createFromParcel(Parcel in) {
-            return new Products(in);
-        }
-
-        @Override
-        public Products[] newArray(int size) {
-            return new Products[size];
-        }
-    };
 
     public String getProduct_name() {
         return product_name;

@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Product Name"
-            android:textColor="@color/background"
+            android:textColor="@color/darkblue"
             android:textSize="25dp" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="MinPlayer"
-            android:textColor="@color/background"
+            android:textColor="@color/darkblue"
             android:textSize="25dp" />
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="MaxPlayer"
-            android:textColor="@color/background"
+            android:textColor="@color/darkblue"
             android:textSize="25dp" />
 
         <TextView
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Price"
-            android:textColor="@color/background"
+            android:textColor="@color/darkblue"
             android:textSize="25dp" />
 
         <TextView
@@ -126,11 +126,10 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:background="@drawable/button_round"
-        android:backgroundTint="@color/red"
         android:backgroundTintMode="src_over"
         android:text="Show location"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="22dp" />
 
     <Button
         android:id="@+id/buy"
@@ -143,6 +142,6 @@
         android:backgroundTintMode="src_over"
         android:text="BUY"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="22dp" />
 
 </LinearLayout>
