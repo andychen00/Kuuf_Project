@@ -20,12 +20,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String Nominal = "Nominal";
 
     private static final String Create_User = "CREATE TABLE IF NOT EXISTS "  + T_User + "(" +
-            User_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            Username + " TEXT NOT NULL, " +
-            Password + " TEXT NOT NULL, " +
-            Phone_Number + " TEXT NOT NULL, " +
-            Date_of_birth + " TEXT NOT NULL, " +
-            Gender + " TEXT NOT NULL, " +
+            User_id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            Username + " TEXT NOT NULL," +
+            Password + " TEXT NOT NULL," +
+            Phone_Number + " TEXT NOT NULL," +
+            Date_of_birth + " TEXT NOT NULL," +
+            Gender + " TEXT NOT NULL," +
             Nominal + " INTEGER NOT NULL" +
             ")";
 
@@ -43,12 +43,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String Create_Product = "CREATE TABLE IF NOT EXISTS "  + T_Product + "(" +
             Product_id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            Product_name + " TEXT NOT NULL, " +
-            Min_player + " INTEGER NOT NULL, " +
-            Max_player + " INTEGER NOT NULL, " +
-            Price + " INTEGER NOT NULL, " +
-            Create_date + " TEXT NOT NULL, " +
-            Longitude + " TEXT NOT NULL, " +
+            Product_name + " TEXT NOT NULL," +
+            Min_player + " INTEGER NOT NULL," +
+            Max_player + " INTEGER NOT NULL," +
+            Price + " INTEGER NOT NULL," +
+            Create_date + " TEXT NOT NULL," +
+            Longitude + " TEXT NOT NULL," +
             Latitude + " TEXT NOT NULL" +
             ")";
 

@@ -16,7 +16,7 @@
         android:gravity="center"
         android:paddingBottom="10dp"
         android:text="Product Detail9"
-        android:textColor="@color/black"
+        android:textColor="@color/blue"
         android:textSize="55dp" />
 
     <LinearLayout

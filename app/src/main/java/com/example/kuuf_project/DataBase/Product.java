@@ -1,22 +1,34 @@
-package com.example.kuuf_project;
+package com.example.kuuf_project.DataBase;
 
 import java.io.Serializable;
 
-public class Products implements Serializable {
+public class Product implements Serializable {
+    private int product_id;
     private String product_name;
     private int min_player;
     private int max_player;
     private int price;
+    private String create_date;
     private double longitude;
     private double latitude;
 
-    public Products(String product_name, int min_player, int max_player, int price, double longitude, double latitude) {
+    public Product(int product_id, String product_name, int min_player, int max_player, int price, String create_date, double longitude, double latitude) {
+        this.product_id = product_id;
         this.product_name = product_name;
         this.min_player = min_player;
         this.max_player = max_player;
         this.price = price;
+        this.create_date = create_date;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 
     public String getProduct_name() {
@@ -49,6 +61,14 @@ public class Products implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(String create_date) {
+        this.create_date = create_date;
     }
 
     public double getLongitude() {
