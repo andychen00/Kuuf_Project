@@ -9,14 +9,16 @@ public class User implements Serializable {
     private String phone_number;
     private String date_birth;
     private String gender;
+    private int balance;
 
-    public User(int userid, String username, String password, String phone_number, String date_birth, String gender) {
+    public User(int userid, String username, String password, String phone_number, String date_birth, String gender, int balance) {
         this.userid = userid;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;
         this.date_birth = date_birth;
         this.gender = gender;
+        this.balance = balance;
     }
 
     public int getUserid() {
@@ -65,5 +67,13 @@ public class User implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }
