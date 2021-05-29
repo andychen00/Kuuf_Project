@@ -1,4 +1,4 @@
-package com.example.kuuf_project;
+package com.example.kuuf_project.Class;
 
 import java.io.Serializable;
 

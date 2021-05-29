@@ -39,7 +39,11 @@ public class ProductDetail extends Activity {
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(ProductDetail.this, Map.class);
+//                Double lat = Double.parseDouble(latitude.getText().toString());
+//                Double log = Double.parseDouble(longtitude.getText().toString());
+                Intent intent =  new Intent(ProductDetail.this, MapsActivity.class);
+//                intent.putExtra("lat", lat);
+//                intent.putExtra("log", log);
                 startActivity(intent);
             }
         });

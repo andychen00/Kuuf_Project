@@ -1,4 +1,4 @@
-package com.example.kuuf_project.DataBase;
+package com.example.kuuf_project.Class;
 
 import java.io.Serializable;
 
@@ -9,18 +9,18 @@ public class Product implements Serializable {
     private int max_player;
     private int price;
     private String create_date;
-    private double longitude;
     private double latitude;
+    private double longitude;
 
-    public Product(int product_id, String product_name, int min_player, int max_player, int price, String create_date, double longitude, double latitude) {
+    public Product(int product_id, String product_name, int min_player, int max_player, int price, String create_date, double latitude, double longitude) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.min_player = min_player;
         this.max_player = max_player;
         this.price = price;
         this.create_date = create_date;
-        this.longitude = longitude;
         this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getProduct_id() {
@@ -71,6 +71,14 @@ public class Product implements Serializable {
         this.create_date = create_date;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
     public double getLongitude() {
         return longitude;
     }
@@ -79,11 +87,4 @@ public class Product implements Serializable {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
 }

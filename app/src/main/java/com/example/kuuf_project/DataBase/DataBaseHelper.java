@@ -10,14 +10,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     final private static String Kuuf_Database = "Kuuf_DB";
     final private static int Database_Version = 1;
 
-    public static final String T_User = "T_User";
-    public static final String User_id = "User_id";
-    public static final String Username = "Username";
-    public static final String Password = "Password";
-    public static final String Phone_Number = "Phone_Number";
-    public static final String Date_of_birth = "Date_of_birth";
-    public static final String Gender = "Gender";
-    public static final String Nominal = "Nominal";
+    public static final String T_User = "User";
+    public static final String User_id = "user_id";
+    public static final String Username = "username";
+    public static final String Password = "password";
+    public static final String Phone_Number = "phone_Number";
+    public static final String Date_of_birth = "date_of_birth";
+    public static final String Gender = "gender";
+    public static final String Nominal = "nominal";
 
     private static final String Create_User = "CREATE TABLE IF NOT EXISTS "  + T_User + "(" +
             User_id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -29,17 +29,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Nominal + " INTEGER NOT NULL" +
             ")";
 
-    private static final String Delete_User = "DROP TABLE IF EXISTS " + T_User;
+    private static final String Delete_User = "DROP TABLE IF EXISTS User";
 
-    public static final String T_Product = "T_Product";
-    public static final String Product_id = "Product_id";
-    public static final String Product_name = "Product_name";
-    public static final String Min_player = "Min_player";
-    public static final String Max_player = "Max_player";
-    public static final String Price = "Price";
-    public static final String Create_date = "Create_date";
-    public static final String Longitude = "Longitude";
-    public static final String Latitude = "Latitude";
+    public static final String T_Product = "Product";
+    public static final String Product_id = "product_id";
+    public static final String Product_name = "product_name";
+    public static final String Min_player = "min_player";
+    public static final String Max_player = "max_player";
+    public static final String Price = "price";
+    public static final String Create_date = "create_date";
+    public static final String Latitude = "latitude";
+    public static final String Longitude = "longitude";
 
     private static final String Create_Product = "CREATE TABLE IF NOT EXISTS "  + T_Product + "(" +
             Product_id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -48,11 +48,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Max_player + " INTEGER NOT NULL," +
             Price + " INTEGER NOT NULL," +
             Create_date + " TEXT NOT NULL," +
-            Longitude + " TEXT NOT NULL," +
-            Latitude + " TEXT NOT NULL" +
+            Latitude + " TEXT NOT NULL," +
+            Longitude + " TEXT NOT NULL" +
             ")";
 
-    private static final String Delete_Product = "DROP TABLE IF EXISTS " + T_Product;
+    private static final String Delete_Product = "DROP TABLE IF EXISTS Product";
+
+    public static final String T_Transaction = "Transactions";
+    public static final String Transaction_id = "transaction_id";
+    public static final String T_user_id = "t_User_id";
+    public static final String T_product_id = "t_product_id";
+    public static final String Transaction_date = "transaction_date";
+
+    private static final String Create_Transaction = "CREATE TABLE IF NOT EXISTS "  + T_Transaction + "(" +
+            Transaction_id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            T_user_id + " INTEGER NOT NULL REFERENCES " + T_User + "(user_id) ON UPDATE CASCADE ON DELETE CASCADE," +
+            T_product_id + " INTEGER NOT NULL REFERENCES " + T_Product + "(product_id) ON UPDATE CASCADE ON DELETE CASCADE," +
+            Transaction_date + " TEXT NOT NULL" +
+            ")";
+
+    private static final String Delete_Transaction = "DROP TABLE IF EXISTS " + T_Transaction;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, Kuuf_Database, null, Database_Version);
@@ -62,16 +77,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(Create_User);
         sqLiteDatabase.execSQL(Create_Product);
-//        sqLiteDatabase.execSQL("INSERT INTO T_User(Username, Password, " +
-//                "Phone_Number, Date_of_birth, Gender, Nominal) VALUES " +
-//                "('test', 'tes1', 'andy', 'asd', 'laki', 50000 )");
-
+        sqLiteDatabase.execSQL(Create_Transaction);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(Delete_User);
         sqLiteDatabase.execSQL(Delete_Product);
+        sqLiteDatabase.execSQL(Delete_Transaction);
         onCreate(sqLiteDatabase);
     }
 }
