@@ -48,8 +48,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Max_player + " INTEGER NOT NULL," +
             Price + " INTEGER NOT NULL," +
             Create_date + " TEXT NOT NULL," +
-            Latitude + " TEXT NOT NULL," +
-            Longitude + " TEXT NOT NULL" +
+            Latitude + " DOUBLE NOT NULL," +
+            Longitude + " DOUBLE NOT NULL" +
             ")";
 
     private static final String Delete_Product = "DROP TABLE IF EXISTS Product";

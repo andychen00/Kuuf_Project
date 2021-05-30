@@ -45,12 +45,11 @@ public class UserHelper {
         } else return 0;
     }
 
-
-    public User getUser(int id) {
+    public User getUser(int user_id) {
         SQLiteDatabase db = DBhelper.getReadableDatabase();
 
-        String selection = "id=?";
-        String[] selectionArgs = {"" + id};
+        String selection = "user_id=?";
+        String[] selectionArgs = {String.valueOf(user_id)};
 
         Cursor cursor = db.query(DBhelper.T_User, null, selection, selectionArgs, null, null, null);
 
@@ -68,6 +67,36 @@ public class UserHelper {
         cursor.close();
         db.close();
         return user;
+    }
+
+    public int getNominal(int user_id) {
+        SQLiteDatabase db = DBhelper.getWritableDatabase();
+
+        String selection = "user_id=?";
+        String[] selectionArgs = {String.valueOf(user_id)};
+
+        Cursor cursor = db.query(DBhelper.T_User, null, selection, selectionArgs, null, null, null);
+
+        cursor.moveToFirst();
+        int nominal = cursor.getInt(cursor.getColumnIndex(DBhelper.Nominal));
+
+        cursor.close();
+        db.close();
+        return nominal;
+    }
+
+    public void UpdateNominal(int user_id, int nominal) {
+        SQLiteDatabase db = DBhelper.getWritableDatabase();
+
+        String whereClause = "user_id=?";
+        String[] whereClauseArgs = {String.valueOf(user_id)};
+
+        ContentValues values = new ContentValues();
+        values.put(DBhelper.Nominal, nominal);
+
+        db.update(DBhelper.T_User, values, whereClause, whereClauseArgs);
+
+        db.close();
     }
 
 }
