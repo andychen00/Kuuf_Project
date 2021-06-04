@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="SIGN UP"
+        android:textColor="#000000"
+        android:textSize="30dp">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="username"
+        android:inputType="text">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="password"
+        android:inputType="textPassword|numberPassword">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/confirm"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="confirm password"
+        android:inputType="textPassword|numberPassword">
+
+    </EditText>
+
+
+
+    <EditText
+        android:id="@+id/number"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="phone number"
+        android:inputType="phone">
+
+    </EditText>
+
+    <DatePicker
+        android:id="@+id/date_picker_actions"
+        android:layout_width="300dp"
+        android:layout_height="94dp">
+
+    </DatePicker>
+
+    <RadioGroup
+        android:layout_width="300dp"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male">
+
+        </RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female">
+
+        </RadioButton>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="sign up"
+
+
+</LinearLayout>
