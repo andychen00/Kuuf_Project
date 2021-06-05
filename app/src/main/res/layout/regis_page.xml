@@ -36,7 +36,7 @@
         android:layout_marginTop="20sp"
         android:background="@drawable/text_round"
         android:hint="password"
-        android:inputType="textPassword|numberPassword"
+        android:inputType="textPassword"
         android:padding="15dp">
 
     </EditText>
@@ -48,7 +48,7 @@
         android:layout_marginTop="20sp"
         android:background="@drawable/text_round"
         android:hint="confirm password"
-        android:inputType="textPassword|numberPassword"
+        android:inputType="textPassword"
         android:padding="15dp">
 
     </EditText>
@@ -81,12 +81,14 @@
 
 
     <RadioGroup
+        android:id="@+id/radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Male">
@@ -94,6 +96,7 @@
         </RadioButton>
 
         <RadioButton
+            android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
