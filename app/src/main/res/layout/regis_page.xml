@@ -3,67 +3,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
         android:text="SIGN UP"
         android:textColor="#000000"
-        android:textSize="30dp">
+        android:textSize="50dp">
 
     </TextView>
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/text_round"
         android:hint="username"
-        android:inputType="text">
+        android:inputType="text"
+        android:padding="15dp">
 
     </EditText>
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/text_round"
         android:hint="password"
-        android:inputType="textPassword|numberPassword">
+        android:inputType="textPassword|numberPassword"
+        android:padding="15dp">
 
     </EditText>
 
     <EditText
         android:id="@+id/confirm"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/text_round"
         android:hint="confirm password"
-        android:inputType="textPassword|numberPassword">
+        android:inputType="textPassword|numberPassword"
+        android:padding="15dp">
 
     </EditText>
-
 
 
     <EditText
         android:id="@+id/number"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/text_round"
         android:hint="phone number"
-        android:inputType="phone">
+        android:inputType="phone"
+        android:outlineAmbientShadowColor="@color/blue"
+        android:padding="15dp">
 
     </EditText>
 
-    <DatePicker
-        android:id="@+id/date_picker_actions"
-        android:layout_width="300dp"
-        android:layout_height="94dp">
+    <Button
+        android:id="@+id/Btndate"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/button_round"
+        android:paddingLeft="15dp"
+        android:text="Select date              >"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
-    </DatePicker>
 
     <RadioGroup
-        android:layout_width="300dp"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -71,20 +92,34 @@
             android:text="Male">
 
         </RadioButton>
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
             android:text="Female">
 
         </RadioButton>
 
     </RadioGroup>
 
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="agreement terms and condition"
+        android:textSize="20dp" />
+
     <Button
         android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/button_round"
         android:text="sign up"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

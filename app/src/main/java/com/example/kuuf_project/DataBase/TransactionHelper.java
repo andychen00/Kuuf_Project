@@ -46,7 +46,7 @@ public class TransactionHelper {
                 String productname = cursor.getString(cursor.getColumnIndex(DBhelper.Product_name));
                 int productprice = cursor.getInt(cursor.getColumnIndex(DBhelper.Price));
                 String transaction_date = cursor.getString(cursor.getColumnIndex(DBhelper.Transaction_date));
-                transactions.add(new Transaction(productname, productprice, transaction_date);
+                transactions.add(new Transaction(productname, productprice, transaction_date));
                 cursor.moveToNext();
             }
         }
