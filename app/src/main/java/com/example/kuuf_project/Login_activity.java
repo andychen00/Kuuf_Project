@@ -52,7 +52,7 @@ public class Login_activity extends AppCompatActivity {
                     if (test == 0) {
                         Toast.makeText(Login_activity.this, "username and password must be registered ", Toast.LENGTH_SHORT).show();
                     } else {
-                        Intent intent = new Intent(Login_activity.this, ProductDetail.class);
+                        Intent intent = new Intent(Login_activity.this, HomeActivity.class);
                         intent.putExtra("userid", test);
                         startActivity(intent);
                         finish();
