@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/productName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction Date"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/transactionDate"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@id/productName"
+        android:layout_marginTop="15dp"
+        android:id="@+id/productPrice"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_below="@id/transactionDate"
+        android:layout_alignParentRight="true"
+        android:id="@+id/deleteTransaction"/>
+</RelativeLayout>
