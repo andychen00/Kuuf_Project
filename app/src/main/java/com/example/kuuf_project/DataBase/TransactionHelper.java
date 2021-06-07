@@ -56,4 +56,19 @@ public class TransactionHelper {
         DBhelper.close();
         return transactions;
     }
+
+    public void deleteTransaction(int usrId, int trId) {
+        SQLiteDatabase db = DBhelper.getWritableDatabase();
+        String tableName = DataBaseHelper.T_Transaction;
+        String userId = DataBaseHelper.T_user_id;
+        String transId = DataBaseHelper.Transaction_id;
+
+        String delete = "DELETE FROM " + tableName +
+                " WHERE " + userId + " = " + usrId +
+                " AND " + transId + " = " + trId;
+
+        db.execSQL(delete);
+        db.close();
+        DBhelper.close();
+    }
 }
