@@ -13,6 +13,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kuuf_project.Class.User;
+import com.example.kuuf_project.DataBase.UserHelper;
+
 public class Profile extends AppCompatActivity {
 
     TextView p_username, p_gender, p_phone, p_wallet, p_date;
@@ -20,7 +23,8 @@ public class Profile extends AppCompatActivity {
     RadioGroup topGroup;
     RadioButton topup;
     EditText p_password;
-    int wallet;
+    int userid;
+    UserHelper userHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class Profile extends AppCompatActivity {
         p_password = findViewById(R.id.p_password);
         confirm = findViewById(R.id.confirm);
         topGroup = findViewById(R.id.topGroup);
+        userHelper = new UserHelper(this);
 
         topGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -43,36 +48,36 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-//        Intent intent = getIntent();
-//        final User profile = (User) intent.getSerializableExtra("profile");
-//        wallet = intent.getIntExtra("wallet", 0);
-//        p_username.setText(profile.getUsername());
-//        p_gender.setText(profile.getGender());
-//        p_phone.setText(profile.getPhone_number());
-//        p_date.setText(profile.getDate_birth());
-//        p_wallet.setText(String.valueOf(wallet));
+        Intent intent = getIntent();
+        User profile = userHelper.getUser(userid);
+        p_username.setText(profile.getUsername());
+        p_gender.setText(profile.getGender());
+        p_phone.setText(profile.getPhone_number());
+        p_date.setText(profile.getDate_birth());
+        p_wallet.setText(profile.getBalance());
 
-//        confirm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!profile.getPassword().matches(p_password.getText().toString())) {
-//                    Toast.makeText(Profile.this, "Input password is wrong", Toast.LENGTH_SHORT).show();
-//                } else if (topup == null) {
-//                    Toast.makeText(Profile.this, "select the top up nominal", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    if (topup.getText().toString().matches("Rp 250.000")) {
-//                        wallet = wallet + 250000;
-//                    } else if (topup.getText().toString().matches("Rp 500.000")) {
-//                        wallet = wallet + 500000;
-//                    } else {
-//                        wallet = wallet + 1000000;
-//                    }
-//                    Intent intent = new Intent(Profile.this, Home.class);
-//                    intent.putExtra("homewallet", wallet);
-//                    setResult(Activity.RESULT_OK, intent);
-//                    finish();
-//                }
-//            }
-//        });
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int wallet = profile.getBalance();
+                if (!profile.getPassword().matches(p_password.getText().toString())) {
+                    Toast.makeText(Profile.this, "Input password is wrong", Toast.LENGTH_SHORT).show();
+                } else if (topup == null) {
+                    Toast.makeText(Profile.this, "select the top up nominal", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (topup.getText().toString().matches("Rp 250.000")) {
+                        wallet = wallet + 250000;
+                    } else if (topup.getText().toString().matches("Rp 500.000")) {
+                        wallet = wallet + 500000;
+                    } else {
+                        wallet = wallet + 1000000;
+                    }
+                    userHelper.UpdateNominal(userid, wallet);
+                    Intent intent = new Intent(Profile.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
     }
 }
