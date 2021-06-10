@@ -16,6 +16,10 @@ import android.widget.Toast;
 import com.example.kuuf_project.Class.User;
 import com.example.kuuf_project.DataBase.UserHelper;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Profile extends AppCompatActivity {
 
     TextView p_username, p_gender, p_phone, p_wallet, p_date;
@@ -48,6 +52,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+
         Intent intent = getIntent();
         userid = intent.getIntExtra("userid",0);
         Toast.makeText(this, "" + userid, Toast.LENGTH_SHORT).show();
@@ -56,7 +61,8 @@ public class Profile extends AppCompatActivity {
         p_gender.setText(profile.getGender());
         p_phone.setText(profile.getPhone_number());
         p_date.setText(profile.getDate_birth());
-        p_wallet.setText("Rp " + String.valueOf(profile.getBalance()));
+        String rupiah = (String.format("%,d", profile.getBalance())).replace(',', '.');
+        p_wallet.setText("Rp " + rupiah);
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +83,7 @@ public class Profile extends AppCompatActivity {
                     userHelper.UpdateNominal(userid, wallet);
                     Intent intent = new Intent(Profile.this, HomeActivity.class);
                     intent.putExtra("p_userid", userid);
-                    startActivity(intent);
+                    setResult(Activity.RESULT_OK, intent);
                     finish();
                 }
             }

@@ -17,6 +17,7 @@ import com.example.kuuf_project.DataBase.TransactionHelper;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
+    public static final int REQUEST_CODE_REPLY = 1;
     ListView lvTransHistory;
     ArrayList<Transaction> transactions;
     TransactionAdapter adapter;
@@ -38,8 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.toProfile) {
             Intent intent = new Intent(HomeActivity.this, Profile.class);
             intent.putExtra("userid",userId);
-            startActivity(intent);
-            finish();
+            startActivityForResult(intent, REQUEST_CODE_REPLY);
         } else {
             Intent intent = new Intent(HomeActivity.this, Login_activity.class);
             startActivity(intent);
