@@ -49,12 +49,14 @@ public class Profile extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        User profile = userHelper.getUser(userid);
+        userid = intent.getIntExtra("userid",0);
+        Toast.makeText(this, "" + userid, Toast.LENGTH_SHORT).show();
+        User profile = userHelper.getUser(1);
         p_username.setText(profile.getUsername());
         p_gender.setText(profile.getGender());
         p_phone.setText(profile.getPhone_number());
         p_date.setText(profile.getDate_birth());
-        p_wallet.setText(profile.getBalance());
+        p_wallet.setText("Rp " + String.valueOf(profile.getBalance()));
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,7 @@ public class Profile extends AppCompatActivity {
                     }
                     userHelper.UpdateNominal(userid, wallet);
                     Intent intent = new Intent(Profile.this, HomeActivity.class);
+                    intent.putExtra("p_userid", userid);
                     startActivity(intent);
                     finish();
                 }

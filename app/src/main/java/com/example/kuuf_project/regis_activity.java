@@ -1,6 +1,5 @@
 package com.example.kuuf_project;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
