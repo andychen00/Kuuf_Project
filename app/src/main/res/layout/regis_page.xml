@@ -6,123 +6,158 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:text="SIGN UP"
-        android:textColor="#000000"
-        android:textSize="50dp">
-
-    </TextView>
-
-    <EditText
-        android:id="@+id/username"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/text_round"
-        android:hint="username"
-        android:inputType="text"
-        android:padding="15dp">
+        android:layout_height="wrap_content">
 
-    </EditText>
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/text_round"
-        android:hint="password"
-        android:inputType="textPassword"
-        android:padding="15dp">
-
-    </EditText>
-
-    <EditText
-        android:id="@+id/confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/text_round"
-        android:hint="confirm password"
-        android:inputType="textPassword"
-        android:padding="15dp">
-
-    </EditText>
-
-
-    <EditText
-        android:id="@+id/number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/text_round"
-        android:hint="phone number"
-        android:inputType="phone"
-        android:outlineAmbientShadowColor="@color/blue"
-        android:padding="15dp">
-
-    </EditText>
-
-    <Button
-        android:id="@+id/Btndate"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/button_round"
-        android:paddingLeft="15dp"
-        android:text="Select date              >"
-        android:textAlignment="textStart"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
-
-
-    <RadioGroup
-        android:id="@+id/radio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/male"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Male">
+            android:orientation="vertical">
 
-        </RadioButton>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:text="SIGN UP"
+                android:textColor="#000000"
+                android:textSize="50dp">
 
-        <RadioButton
-            android:id="@+id/female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20sp"
-            android:text="Female">
+            </TextView>
 
-        </RadioButton>
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/text_round"
+                android:hint="username"
+                android:inputType="text"
+                android:padding="15dp">
 
-    </RadioGroup>
+            </EditText>
 
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="agreement terms and condition"
-        android:textSize="20dp" />
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/text_round"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:padding="15dp">
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/button_round"
-        android:text="sign up"
-        android:textColor="@color/white" />
+            </EditText>
 
+            <EditText
+                android:id="@+id/confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/text_round"
+                android:hint="confirm password"
+                android:inputType="textPassword"
+                android:padding="15dp">
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/text_round"
+                android:hint="phone number"
+                android:inputType="phone"
+                android:outlineAmbientShadowColor="@color/blue"
+                android:padding="15dp">
+
+            </EditText>
+
+            <Button
+                android:id="@+id/Btndate"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/button_round"
+                android:paddingLeft="15dp"
+                android:text="Select date              >"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+
+            <RadioGroup
+                android:id="@+id/radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male">
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20sp"
+                    android:text="Female">
+
+                </RadioButton>
+
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="agreement terms and condition"
+                android:textSize="20dp" />
+
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_round"
+                android:layout_gravity="center"
+                android:text="sign up"
+                android:textColor="@color/white">
+
+            </Button>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:text="or">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:text="login"
+                android:textColorHighlight="#50A5E8"
+                android:textColorLink="#009688">
+
+            </Button>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

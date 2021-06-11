@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
     android:padding="20dp">
@@ -9,33 +10,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginLeft="130dp"
         android:layout_marginTop="40dp"
         android:text="KUUF App"
         android:textColor="#000000"
         android:textSize="30dp">
-
     </TextView>
 
-    <LinearLayout
-        android:id="@+id/layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:orientation="vertical">
 
         <EditText
             android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/text_round"
             android:hint="username"
             android:inputType="text"
             android:padding="15dp">
-
         </EditText>
 
         <EditText
@@ -47,53 +37,39 @@
             android:hint="password"
             android:inputType="textPassword"
             android:padding="15dp">
-
-
         </EditText>
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:text="Don't have an account?"
-            android:textColor="#837C7C">
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_round"
+            android:layout_gravity="center"
+            android:text="login"
+            android:textColor="@color/white">
 
-        </TextView>
+        </Button>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="or" />
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:text="or">
+        </TextView>
+
+        <Button
+            android:id="@+id/regisbtn"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="sign up"
+            android:textColorHighlight="#50A5E8"
+            android:textColorLink="#009688">
+
+        </Button>
 
 
-    <Button
-        android:id="@+id/regisbtn"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="330dp"
-        android:gravity="center"
-        android:text="sign up"
-        android:textColorHighlight="#50A5E8"
-        android:textColorLink="#009688">
 
-    </Button>
-
-
-    <Button
-        android:id="@+id/loginbtn"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="400dp"
-        android:background="@drawable/button_round"
-        android:gravity="center"
-        android:text="login"
-        android:textColor="@color/white">
-
-    </Button>
-
-
-</RelativeLayout>
+</LinearLayout>

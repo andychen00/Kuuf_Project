@@ -62,10 +62,21 @@ public class regis_activity extends AppCompatActivity {
         confirm_password = findViewById(R.id.confirm);
         phone = findViewById(R.id.number);
         register = findViewById(R.id.register);
+        login = findViewById(R.id.login);
         genderGroup = findViewById(R.id.radio);
         checkBox = findViewById(R.id.checkbox);
         date_birth = findViewById(R.id.Btndate);
         userHelper = new UserHelper(this);
+
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(regis_activity.this, Login_activity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +136,8 @@ public class regis_activity extends AppCompatActivity {
                 builder.show();
             }
         });
+
+
 
 //        login.setOnClickListener(new View.OnClickListener() {
 //            @Override
