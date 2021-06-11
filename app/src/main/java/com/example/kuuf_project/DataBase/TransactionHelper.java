@@ -31,12 +31,14 @@ public class TransactionHelper {
         DBhelper.close();
     }
 
-    public ArrayList<Transaction> getTransaction(int user_id) {
+    public ArrayList<Transaction> getTransaction(int userid) {
         SQLiteDatabase db = DBhelper.getReadableDatabase();
 
-        String get_subscription = "SELECT *" +
+        String get_subscription = "SELECT product_name, price, transaction_date" +
                 " FROM " + DBhelper.T_Transaction + " t " +
-                " WHERE t. " + DBhelper.T_user_id + " = " + user_id ;
+                "JOIN" + DBhelper.T_Product + "p" + "ON t.t_product_id = product_id" +
+                "JOIN" + DBhelper.T_user_id + "u" + "ON t.t_User_id = user_id" +
+                " WHERE t. " + DBhelper.T_user_id + " = " + userid ;
 
         Cursor cursor = db.rawQuery(get_subscription, null);
         ArrayList<Transaction> transactions = null;
@@ -55,5 +57,20 @@ public class TransactionHelper {
         db.close();
         DBhelper.close();
         return transactions;
+    }
+
+    public void deleteTransaction(int usrId, int trId) {
+        SQLiteDatabase db = DBhelper.getWritableDatabase();
+        String tableName = DataBaseHelper.T_Transaction;
+        String userId = DataBaseHelper.T_user_id;
+        String transId = DataBaseHelper.Transaction_id;
+
+        String delete = "DELETE FROM " + tableName +
+                " WHERE " + userId + " = " + usrId +
+                " AND " + transId + " = " + trId;
+
+        db.execSQL(delete);
+        db.close();
+        DBhelper.close();
     }
 }

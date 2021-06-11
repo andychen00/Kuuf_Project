@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.kuuf_project.Class.Product;
+import com.example.kuuf_project.Class.User;
 
 import java.util.ArrayList;
 
@@ -52,8 +53,8 @@ public class ProductHelper {
                 String create_date = cursor.getString(cursor.getColumnIndex(DBhelper.Create_date));
                 double latitude = cursor.getDouble(cursor.getColumnIndex(DBhelper.Latitude));
                 double longitude = cursor.getDouble(cursor.getColumnIndex(DBhelper.Longitude));
-                Productlist.add(new Product(product_id, product_name, min_player,  max_player,
-                        price, create_date, latitude,  longitude));
+                Productlist.add(new Product(product_id, product_name, min_player, max_player,
+                        price, create_date, latitude, longitude));
                 cursor.moveToNext();
             }
         }
@@ -62,5 +63,31 @@ public class ProductHelper {
         db.close();
         DBhelper.close();
         return Productlist;
+    }
+
+    public Product getProduct(int produk_id) {
+        SQLiteDatabase db = DBhelper.getReadableDatabase();
+
+        String selection = "product_id=?";
+        String[] selectionArgs = {String.valueOf(produk_id)};
+
+        Cursor cursor = db.query(DBhelper.T_Product, null, selection, selectionArgs, null, null, null);
+        cursor.moveToFirst();
+
+        Product product = new Product();
+        if (cursor.getCount() > 0) {
+            product.setProduct_id(cursor.getInt(cursor.getColumnIndex(DBhelper.Product_id)));
+            product.setProduct_name(cursor.getString(cursor.getColumnIndex(DBhelper.Product_name)));
+            product.setMin_player(cursor.getInt(cursor.getColumnIndex(DBhelper.Min_player)));
+            product.setMax_player(cursor.getInt(cursor.getColumnIndex(DBhelper.Max_player)));
+            product.setPrice(cursor.getInt(cursor.getColumnIndex(DBhelper.Price)));
+            product.setCreate_date(cursor.getString(cursor.getColumnIndex(DBhelper.Create_date)));
+            product.setLatitude(cursor.getDouble(cursor.getColumnIndex(DBhelper.Latitude)));
+            product.setLongitude(cursor.getDouble(cursor.getColumnIndex(DBhelper.Longitude)));
+        }
+
+        cursor.close();
+        db.close();
+        return product;
     }
 }

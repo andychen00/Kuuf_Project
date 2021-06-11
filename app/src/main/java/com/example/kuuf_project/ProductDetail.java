@@ -10,11 +10,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kuuf_project.Class.Product;
+import com.example.kuuf_project.Class.Transaction;
+import com.example.kuuf_project.DataBase.ProductHelper;
+import com.example.kuuf_project.DataBase.TransactionHelper;
+import com.example.kuuf_project.DataBase.UserHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class ProductDetail extends Activity {
 
     TextView pd_name, pd_minplayer, pd_maxplayer, pd_price;
     Button location, buy;
-    int sisawallet;
+    int sisawallet, userid, productid;
+    ProductHelper productHelper;
+    UserHelper userHelper;
+    TransactionHelper transactionHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,23 +39,28 @@ public class ProductDetail extends Activity {
         pd_price = findViewById(R.id.pd_price);
         location = findViewById(R.id.location);
         buy = findViewById(R.id.buy);
+        productHelper = new ProductHelper(this);
+        userHelper = new UserHelper(this);
+        transactionHelper = new TransactionHelper(this);
 
-//        Intent intent = getIntent();
-//        final Products product = (Products) intent.getSerializableExtra("product");
-//        pd_name.setText(product.getProduct_name());
-//        pd_minplayer.setText(String.valueOf(product.getMin_player()));
-//        pd_maxplayer.setText(String.valueOf(product.getMax_player()));
-//        pd_price.setText(String.valueOf(product.getPrice()));
-//        sisawallet = intent.getIntExtra("wallet", 0);
-//
+        Intent intent = getIntent();
+        productid = intent.getIntExtra("produkid",0);
+        userid = intent.getIntExtra("userid", 0);
+        Product product = productHelper.getProduct(productid);
+        pd_name.setText(product.getProduct_name());
+        pd_minplayer.setText(String.valueOf(product.getMin_player()));
+        pd_maxplayer.setText(String.valueOf(product.getMax_player()));
+        pd_price.setText(String.valueOf(product.getPrice()));
+        sisawallet = userHelper.getNominal(userid);
+
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Double lat = Double.parseDouble(latitude.getText().toString());
-//                Double log = Double.parseDouble(longtitude.getText().toString());
+                Double lat = product.getLatitude();
+                Double log = product.getLongitude();
                 Intent intent =  new Intent(ProductDetail.this, MapsActivity.class);
-//                intent.putExtra("lat", lat);
-//                intent.putExtra("log", log);
+                intent.putExtra("lat", lat);
+                intent.putExtra("log", log);
                 startActivity(intent);
             }
         });
@@ -55,27 +72,29 @@ public class ProductDetail extends Activity {
                 startActivity(intent);
             }
         });
-//        buy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (sisawallet < product.getPrice()) {
-//                    Toast.makeText(ProductDetail.this, "Your wallet is not sufficient", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    sisawallet = sisawallet - product.getPrice();
-//                    Products purchase = new Products(product.getProduct_name(), product.getMin_player(), product.getMax_player(),
-//                            product.getPrice(), product.getLongitude(), product.getLatitude());
-//                    Intent intent = new Intent(ProductDetail.this, Home.class);
-//                    intent.putExtra("purchase", purchase);
-//                    intent.putExtra("sisawallet", sisawallet);
-//                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP|intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                    try{
-//                        startActivity(intent);
-//                    }finally {
-//                        finish();
-//                    }
-//                }
-//            }
-//        });
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (sisawallet < product.getPrice()) {
+                    Toast.makeText(ProductDetail.this, "Your wallet is not sufficient", Toast.LENGTH_SHORT).show();
+                } else {
+                    sisawallet = sisawallet - product.getPrice();
+                    userHelper.UpdateNominal(userid, sisawallet);
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    String date = simpleDateFormat.format(calendar.getTime());
+                    Transaction purchase = new Transaction(1, userid, productid, date);
+                    Intent intent = new Intent(ProductDetail.this, HomeActivity.class);
+                    intent.putExtra("userid",userid);
+                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP|intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    try{
+                        startActivity(intent);
+                    }finally {
+                        finish();
+                    }
+                }
+            }
+        });
 
 
     }

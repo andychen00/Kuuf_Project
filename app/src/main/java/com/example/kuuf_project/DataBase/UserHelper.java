@@ -52,9 +52,11 @@ public class UserHelper {
         String[] selectionArgs = {String.valueOf(user_id)};
 
         Cursor cursor = db.query(DBhelper.T_User, null, selection, selectionArgs, null, null, null);
+        cursor.moveToFirst();
 
-        User user = null;
-        if (cursor.moveToFirst()) {
+        User user = new User();
+        if (cursor.getCount() > 0) {
+
             user.setUserid(cursor.getInt(cursor.getColumnIndex(DBhelper.User_id)));
             user.setUsername(cursor.getString(cursor.getColumnIndex(DBhelper.Username)));
             user.setPassword(cursor.getString(cursor.getColumnIndex(DBhelper.Password)));

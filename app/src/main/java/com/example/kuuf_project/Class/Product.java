@@ -23,6 +23,10 @@ public class Product implements Serializable {
         this.longitude = longitude;
     }
 
+    public Product() {
+
+    }
+
     public int getProduct_id() {
         return product_id;
     }

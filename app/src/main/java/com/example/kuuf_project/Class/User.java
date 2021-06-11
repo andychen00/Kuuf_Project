@@ -21,6 +21,8 @@ public class User implements Serializable {
         this.balance = balance;
     }
 
+    public User(){}
+
     public int getUserid() {
         return userid;
     }
