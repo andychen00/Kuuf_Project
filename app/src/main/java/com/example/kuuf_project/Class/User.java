@@ -21,7 +21,13 @@ public class User implements Serializable {
         this.balance = balance;
     }
 
-    public User(){}
+    public User(String phone_number, int balance) {
+        this.phone_number = phone_number;
+        this.balance = balance;
+    }
+
+    public User() {
+    }
 
     public int getUserid() {
         return userid;

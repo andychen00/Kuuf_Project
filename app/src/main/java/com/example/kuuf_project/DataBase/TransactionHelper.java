@@ -36,9 +36,9 @@ public class TransactionHelper {
 
         String get_subscription = "SELECT product_name, price, transaction_date" +
                 " FROM " + DBhelper.T_Transaction + " t " +
-                "JOIN" + DBhelper.T_Product + "p" + "ON t.t_product_id = product_id" +
-                "JOIN" + DBhelper.T_user_id + "u" + "ON t.t_User_id = user_id" +
-                " WHERE t. " + DBhelper.T_user_id + " = " + userid ;
+                " JOIN " + DBhelper.T_Product + " p " + "ON t.t_product_id = p.product_id" +
+                " JOIN " + DBhelper.T_User + " u " + "ON t.t_User_id = u.user_id" +
+                " WHERE t." + DBhelper.T_user_id + " = " + userid ;
 
         Cursor cursor = db.rawQuery(get_subscription, null);
         ArrayList<Transaction> transactions = null;

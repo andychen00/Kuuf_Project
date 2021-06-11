@@ -71,20 +71,23 @@ public class UserHelper {
         return user;
     }
 
-    public int getNominal(int user_id) {
+    public User getPhoneNominal(int user_id) {
         SQLiteDatabase db = DBhelper.getWritableDatabase();
 
         String selection = "user_id=?";
         String[] selectionArgs = {String.valueOf(user_id)};
 
         Cursor cursor = db.query(DBhelper.T_User, null, selection, selectionArgs, null, null, null);
-
         cursor.moveToFirst();
+
         int nominal = cursor.getInt(cursor.getColumnIndex(DBhelper.Nominal));
+        String phonenumber = cursor.getString(cursor.getColumnIndex(DBhelper.Phone_Number));
+        User user = new User(phonenumber, nominal);
+
 
         cursor.close();
         db.close();
-        return nominal;
+        return user;
     }
 
     public void UpdateNominal(int user_id, int nominal) {
