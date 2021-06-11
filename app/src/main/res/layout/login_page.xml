@@ -67,11 +67,12 @@
             android:text="or" />
     </LinearLayout>
 
+
     <Button
         android:id="@+id/regisbtn"
         android:layout_width="160dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginTop="330dp"
         android:gravity="center"
         android:text="sign up"
@@ -81,12 +82,11 @@
     </Button>
 
 
-
     <Button
         android:id="@+id/loginbtn"
         android:layout_width="160dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginTop="400dp"
         android:background="@drawable/button_round"
         android:gravity="center"
