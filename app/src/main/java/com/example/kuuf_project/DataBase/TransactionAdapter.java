@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -23,6 +24,8 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> implements Vie
     TextView productName, transactionDate, productPrice;
     Button deleteTransaction;
 
+    int trId;
+
     public View getView(int position, View v, ViewGroup parent) {
         Transaction transaction = getItem(position);
 
@@ -34,18 +37,24 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> implements Vie
         transactionDate = v.findViewById(R.id.transactionDate);
         productPrice = v.findViewById(R.id.productPrice);
 
-        deleteTransaction = v.findViewById(R.id.deleteTransaction);
-        deleteTransaction.setOnClickListener(this);
-
         productName.setText(transaction.getProductname());
         transactionDate.setText(transaction.getTransaction_date());
         productPrice.setText(transaction.getProductprice());
+
+        deleteTransaction = v.findViewById(R.id.deleteTransaction);
+        deleteTransaction.setOnClickListener(this);
+
+        trId = transaction.getTransaction_id();
 
         return v;
     }
 
     @Override
     public void onClick(View v) {
-        TransactionHelper helper;
+        TransactionHelper helper = new TransactionHelper(getContext());
+        if(v.getId() == R.id.deleteTransaction) {
+            helper.deleteTransaction(trId);
+            Toast.makeText(getContext(), "Transaction Deleted.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

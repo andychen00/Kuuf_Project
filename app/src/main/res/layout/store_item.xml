@@ -18,32 +18,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction Date"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Min. Player"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/black"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@id/productName"
         android:layout_marginTop="5dp"
-        android:id="@+id/transactionDate"/>
+        android:id="@+id/minPlayer"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Product Price"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Max. Player"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/black"
-        android:layout_below="@id/productName"
-        android:layout_marginTop="15dp"
-        android:id="@+id/productPrice"/>
+        android:layout_below="@id/minPlayer"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/maxPlayer"/>
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete"
-        android:layout_below="@id/transactionDate"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/button_round"
-        android:textColor="@color/white"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/deleteTransaction"/>
+        android:text="Price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/productName"
+        android:id="@+id/productPrice"/>
+
 </RelativeLayout>
