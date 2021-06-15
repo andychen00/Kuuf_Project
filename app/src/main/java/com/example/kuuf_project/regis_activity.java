@@ -1,5 +1,6 @@
 package com.example.kuuf_project;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,8 +74,8 @@ public class regis_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(regis_activity.this, Login_activity.class);
+                setResult(Activity.RESULT_OK, intent);
                 finish();
-                startActivity(intent);
             }
         });
 
@@ -100,6 +101,7 @@ public class regis_activity extends AppCompatActivity {
 
                     userHelper.insertUser(user);
                     Intent intent = new Intent(regis_activity.this, Login_activity.class);
+                    setResult(Activity.RESULT_OK, intent);
                     finish();
                 }
             }

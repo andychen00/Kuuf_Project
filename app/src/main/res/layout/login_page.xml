@@ -9,11 +9,12 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="KUUF App"
-        android:textColor="#000000"
-        android:textSize="30dp">
+        android:text="Kuuf App8"
+        android:textColor="@color/darkblue"
+        android:fontFamily="@font/satu"
+        android:textSize="60dp">
     </TextView>
 
 

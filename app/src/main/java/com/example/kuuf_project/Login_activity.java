@@ -15,6 +15,7 @@ import com.example.kuuf_project.DataBase.UserHelper;
 
 public class Login_activity extends AppCompatActivity {
 
+    public static final int REQUEST_CODE_REPLY = 1;
     EditText username, password;
     Button login, register;
     UserHelper userHelper;
@@ -34,8 +35,8 @@ public class Login_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login_activity.this, regis_activity.class);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent, REQUEST_CODE_REPLY);
+
             }
         });
 

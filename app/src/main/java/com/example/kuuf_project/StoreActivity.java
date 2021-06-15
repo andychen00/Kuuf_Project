@@ -1,21 +1,22 @@
 package com.example.kuuf_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
 
 import com.example.kuuf_project.Class.Product;
-import com.example.kuuf_project.DataBase.ProductAdapter;
 import com.example.kuuf_project.DataBase.ProductHelper;
-import com.example.kuuf_project.DataBase.TransactionHelper;
 
 import java.util.ArrayList;
 
 public class StoreActivity extends AppCompatActivity {
-    ListView lvStoreItem;
+    RecyclerView lvStoreItem;
     ArrayList<Product> products;
-    ProductAdapter adapter;
+    ProductHelper productHelper;
+    int userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +25,21 @@ public class StoreActivity extends AppCompatActivity {
 
         lvStoreItem = findViewById(R.id.lvStoreItem);
         products = new ArrayList<>();
+        productHelper = new ProductHelper(this);
+
         getData();
     }
 
     public void getData() {
+        Intent intent = getIntent();
+        userid = intent.getIntExtra("userid", 0);
+
         ProductHelper helper = new ProductHelper(this);
         helper.ViewAllProduct();
 
-//        adapter = new ProductAdapter();
-        lvStoreItem.setAdapter(adapter);
+        StoreAdapter storeAdapter = new StoreAdapter();
+        storeAdapter.setArrayListdata(products);
+        lvStoreItem.setAdapter(storeAdapter);
+        lvStoreItem.setLayoutManager(new LinearLayoutManager(this));
     }
 }

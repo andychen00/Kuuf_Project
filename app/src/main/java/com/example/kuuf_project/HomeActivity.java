@@ -34,7 +34,8 @@ public class HomeActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.toHome) {
             return true;
         } else if (item.getItemId() == R.id.toStore) {
-            Intent intent = new Intent(HomeActivity.this, Profile.class);
+            Intent intent = new Intent(HomeActivity.this, StoreActivity.class);
+            intent.putExtra("userid",userId);
             startActivity(intent);
         } else if (item.getItemId() == R.id.toProfile) {
             Intent intent = new Intent(HomeActivity.this, Profile.class);
