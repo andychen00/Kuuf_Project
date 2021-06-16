@@ -55,7 +55,7 @@ public class ProductDetail extends Activity {
         permission();
 
         Intent intent = getIntent();
-        productid = intent.getIntExtra("produkid",0);
+        productid = intent.getIntExtra("productid",0);
         userid = intent.getIntExtra("userid", 0);
         Product product = productHelper.getProduct(productid);
         pd_name.setText(product.getProduct_name());
@@ -99,7 +99,7 @@ public class ProductDetail extends Activity {
                     Transaction purchase = new Transaction(1, userid, productid, date);
                     Intent intent = new Intent(ProductDetail.this, HomeActivity.class);
                     intent.putExtra("userid",userid);
-                    smsManager.sendTextMessage(phone_number, null,
+                    smsManager.sendTextMessage("5554", null,
                             "Your Transaction is Success", null, null);
                     intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP|intent.FLAG_ACTIVITY_SINGLE_TOP);
                     try{

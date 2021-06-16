@@ -25,12 +25,12 @@ public class ProductHelper {
         values.put(DataBaseHelper.Product_name, product.getProduct_name());
         values.put(DataBaseHelper.Min_player, product.getMin_player());
         values.put(DataBaseHelper.Max_player, product.getMax_player());
-        values.put(DataBaseHelper.Price, product.getCreate_date());
+        values.put(DataBaseHelper.Price, product.getPrice());
         values.put(DataBaseHelper.Create_date, product.getCreate_date());
         values.put(DataBaseHelper.Latitude, product.getLatitude());
         values.put(DataBaseHelper.Longitude, product.getLongitude());
 
-        db.insert(DataBaseHelper.T_User, null, values);
+        db.insert(DataBaseHelper.T_Product, null, values);
         db.close();
         DBhelper.close();
     }
@@ -63,6 +63,17 @@ public class ProductHelper {
         db.close();
         DBhelper.close();
         return Productlist;
+    }
+
+    public int countproduct(){
+        SQLiteDatabase db = DBhelper.getReadableDatabase();
+
+        Cursor cursor = db.query(DBhelper.T_Product, null, null,
+                null, null, null, null);
+        int countlist = cursor.getCount();
+        cursor.close();
+        db.close();
+        return countlist;
     }
 
     public Product getProduct(int produk_id) {

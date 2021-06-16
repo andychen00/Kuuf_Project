@@ -19,6 +19,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
 
     Context context;
     ArrayList<Product> product = new ArrayList<>();
+    int userid;
 
     @NonNull
     @Override
@@ -40,19 +41,21 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ProductDetail.class);
-
+                intent.putExtra("userid", userid);
+                intent.putExtra("productid", product.get(position).getProduct_id());
                 context.startActivity(intent);
             }
         });
     }
 
     @Override
-    public int getItemCount(    ) {
+    public int getItemCount() {
         return product.size();
     }
 
-    public void setArrayListdata(ArrayList<Product> product) {
+    public void setArrayListdata(ArrayList<Product> product, int userid) {
         this.product = product;
+        this.userid = userid;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
