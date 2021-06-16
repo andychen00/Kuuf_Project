@@ -2,25 +2,34 @@ package com.example.kuuf_project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kuuf_project.Class.Transaction;
-import com.example.kuuf_project.DataBase.TransactionAdapter;
+import com.example.kuuf_project.Class.User;
 import com.example.kuuf_project.DataBase.TransactionHelper;
+import com.example.kuuf_project.DataBase.UserHelper;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
+
     public static final int REQUEST_CODE_REPLY = 1;
-    ListView lvTransHistory;
+    RecyclerView lvTransHistory;
     ArrayList<Transaction> transactions;
-    TransactionAdapter adapter;
+    TextView username, nomimal, message;
+    HomeAdapter homeAdapter;
+    TransactionHelper transactionHelper;
+    UserHelper userHelper;
+    User user;
     int userId;
 
     @Override
@@ -35,11 +44,11 @@ public class HomeActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.toStore) {
             Intent intent = new Intent(HomeActivity.this, StoreActivity.class);
-            intent.putExtra("userid",userId);
+            intent.putExtra("userid", userId);
             startActivity(intent);
         } else if (item.getItemId() == R.id.toProfile) {
             Intent intent = new Intent(HomeActivity.this, Profile.class);
-            intent.putExtra("userid",userId);
+            intent.putExtra("userid", userId);
             startActivityForResult(intent, REQUEST_CODE_REPLY);
         } else {
             Intent intent = new Intent(HomeActivity.this, Login_activity.class);
@@ -54,30 +63,59 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        username = findViewById(R.id.username);
+        nomimal = findViewById(R.id.nomimal);
+        message = findViewById(R.id.message);
         lvTransHistory = findViewById(R.id.lvTransHistory);
-        transactions = new ArrayList<>();
-        getData();
-        Toast.makeText(this,"" + userId, Toast.LENGTH_SHORT).show();
-    }
+        transactionHelper = new TransactionHelper(this);
+        userHelper = new UserHelper(this);
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getData();
-    }
-
-    public void getData() {
         Intent intent = getIntent();
         userId = intent.getIntExtra("userid", 0);
-        if(userId == 0){
-            userId = intent.getIntExtra("p_userid",0);
+        if (userId == 0) {
+            userId = intent.getIntExtra("p_userid", 0);
+        }
+        user = userHelper.getUserData(userId);
+        username.setText(user.getUsername());
+        nomimal.setText(String.valueOf(user.getBalance()));
+
+        transactions = transactionHelper.getTransaction(userId);
+
+        if (transactions == null) {
+            message.setVisibility(View.VISIBLE);
+            lvTransHistory.setVisibility(View.INVISIBLE);
+        } else {
+            lvTransHistory.setVisibility(View.VISIBLE);
+            message.setVisibility(View.INVISIBLE);
         }
 
-        TransactionHelper helper = new TransactionHelper(this);
-        helper.getTransaction(userId);
 
-        adapter = new TransactionAdapter(this, transactions);
-        lvTransHistory.setAdapter(adapter);
+        if (transactions != null) {
+            homeAdapter = new HomeAdapter();
+            homeAdapter.setArrayListdata(transactions);
+            lvTransHistory.setAdapter(homeAdapter);
+            lvTransHistory.setLayoutManager(new LinearLayoutManager(this));
+            homeAdapter.setOnClickListener(new HomeAdapter.OnItemClickListener() {
+                @Override
+                public Void deleteItem(int position) {
+                    Toast.makeText(HomeActivity.this, "" + transactions.get(position).getTransaction_id(), Toast.LENGTH_LONG).show();
+                    transactionHelper.deleteTransaction(transactions.get(position).getTransaction_id());
+                    transactions.remove(position);
+                    homeAdapter.notifyItemRemoved(position);
+                    homeAdapter.notifyItemRangeChanged(position, transactions.size());
+                    homeAdapter.notifyDataSetChanged();
+                    if (transactions.isEmpty()) {
+                        message.setVisibility(View.VISIBLE);
+                        lvTransHistory.setVisibility(View.INVISIBLE);
+                    } else {
+                        lvTransHistory.setVisibility(View.VISIBLE);
+                        message.setVisibility(View.INVISIBLE);
+                    }
+                    return null;
+                }
+            });
+        }
+        Toast.makeText(this, "" + userId, Toast.LENGTH_SHORT).show();
     }
 
 }

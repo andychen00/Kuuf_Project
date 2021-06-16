@@ -15,7 +15,8 @@ public class Transaction {
         Transaction_date = transaction_date;
     }
 
-    public Transaction(String productname, int productprice, String transaction_date) {
+    public Transaction(int transaction_id, String productname, int productprice, String transaction_date) {
+        this.transaction_id = transaction_id;
         this.productname = productname;
         this.productprice = productprice;
         Transaction_date = transaction_date;

@@ -21,7 +21,8 @@ public class User implements Serializable {
         this.balance = balance;
     }
 
-    public User(String phone_number, int balance) {
+    public User(String username, String phone_number, int balance) {
+        this.username = username;
         this.phone_number = phone_number;
         this.balance = balance;
     }

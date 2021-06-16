@@ -62,7 +62,7 @@ public class ProductDetail extends Activity {
         pd_minplayer.setText(String.valueOf(product.getMin_player()));
         pd_maxplayer.setText(String.valueOf(product.getMax_player()));
         pd_price.setText(String.valueOf(product.getPrice()));
-        user = userHelper.getPhoneNominal(userid);
+        user = userHelper.getUserData(userid);
         phone_number = user.getPhone_number();
         sisawallet = user.getBalance();
 
@@ -97,11 +97,12 @@ public class ProductDetail extends Activity {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                     String date = simpleDateFormat.format(calendar.getTime());
                     Transaction purchase = new Transaction(1, userid, productid, date);
+                    transactionHelper.insertTransaction(purchase);
                     Intent intent = new Intent(ProductDetail.this, HomeActivity.class);
                     intent.putExtra("userid",userid);
                     smsManager.sendTextMessage("5554", null,
                             "Your Transaction is Success", null, null);
-                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP|intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                     try{
                         startActivity(intent);
                     }finally {

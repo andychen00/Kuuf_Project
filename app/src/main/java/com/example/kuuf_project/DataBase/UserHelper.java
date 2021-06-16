@@ -71,7 +71,7 @@ public class UserHelper {
         return user;
     }
 
-    public User getPhoneNominal(int user_id) {
+    public User getUserData(int user_id) {
         SQLiteDatabase db = DBhelper.getWritableDatabase();
 
         String selection = "user_id=?";
@@ -81,8 +81,9 @@ public class UserHelper {
         cursor.moveToFirst();
 
         int nominal = cursor.getInt(cursor.getColumnIndex(DBhelper.Nominal));
+        String username = cursor.getString(cursor.getColumnIndex(DBhelper.Username));
         String phonenumber = cursor.getString(cursor.getColumnIndex(DBhelper.Phone_Number));
-        User user = new User(phonenumber, nominal);
+        User user = new User(username, phonenumber, nominal);
 
 
         cursor.close();
