@@ -64,7 +64,6 @@ public class StoreActivity extends AppCompatActivity {
                     }, error -> {
                 Log.e("Error Info : ", error.toString());
             });
-
             requestQueue.add(jsonObjectRequest);
         } else {
             productlist = productHelper.ViewAllProduct();

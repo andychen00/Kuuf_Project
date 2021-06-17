@@ -23,14 +23,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Product Name      : "
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/p_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="baju"
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,14 +47,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="MinPlayer              : "
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/minplayer"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="1"
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,14 +71,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="MaxPlayer             : "
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/maxplayer"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="1"
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,14 +95,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Price                       : Rp "
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/p_price"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="10000"
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
     </LinearLayout>

@@ -80,7 +80,7 @@
                 android:layout_marginTop="20sp"
                 android:background="@drawable/button_round"
                 android:paddingLeft="15dp"
-                android:text="Select date              >"
+                android:text="Date of Birth            >"
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
@@ -149,6 +149,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="login"
+                android:background="@drawable/button_round"
+                android:backgroundTint="@color/red"
+                android:textColor="@color/white"
                 android:textColorHighlight="#50A5E8"
                 android:textColorLink="#009688">
 

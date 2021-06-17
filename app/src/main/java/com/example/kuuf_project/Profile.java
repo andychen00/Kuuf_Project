@@ -82,7 +82,7 @@ public class Profile extends AppCompatActivity {
                     }
                     userHelper.UpdateNominal(userid, wallet);
                     Intent intent = new Intent(Profile.this, HomeActivity.class);
-                    intent.putExtra("p_userid", userid);
+                    intent.putExtra("userid", userid);
                     setResult(Activity.RESULT_OK, intent);
                     finish();
                 }

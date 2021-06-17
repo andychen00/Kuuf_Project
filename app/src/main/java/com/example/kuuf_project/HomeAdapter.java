@@ -41,7 +41,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.productName.setText(history.get(position).getProductname());
-        holder.productPrice.setText(String.valueOf(history.get(position).getProductprice()));
+        String rupiah = (String.format("%,d", history.get(position).getProductprice())).replace(',', '.');
+        holder.productPrice.setText("Rp" + rupiah);
         holder.transactionDate.setText(history.get(position).getTransaction_date());
 
     }

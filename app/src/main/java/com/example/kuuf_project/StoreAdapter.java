@@ -35,7 +35,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         holder.productname.setText(product.get(position).getProduct_name());
         holder.minplayer.setText(String.valueOf(product.get(position).getMin_player()));
         holder.maxplayer.setText(String.valueOf(product.get(position).getMax_player()));
-        holder.price.setText(String.valueOf(product.get(position).getPrice()));
+        String rupiah = (String.format("%,d", product.get(position).getPrice())).replace(',', '.');
+        holder.price.setText("Rp " + rupiah);
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override

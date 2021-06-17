@@ -1,10 +1,12 @@
 package com.example.kuuf_project;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -75,9 +77,11 @@ public class HomeActivity extends AppCompatActivity {
         if (userId == 0) {
             userId = intent.getIntExtra("p_userid", 0);
         }
+
         user = userHelper.getUserData(userId);
         username.setText(user.getUsername());
-        nomimal.setText(String.valueOf(user.getBalance()));
+        String rupiah = (String.format("%,d", user.getBalance())).replace(',', '.');
+        nomimal.setText(rupiah);
 
         transactions = transactionHelper.getTransaction(userId);
 
@@ -89,7 +93,6 @@ public class HomeActivity extends AppCompatActivity {
             message.setVisibility(View.INVISIBLE);
         }
 
-
         if (transactions != null) {
             homeAdapter = new HomeAdapter();
             homeAdapter.setArrayListdata(transactions);
@@ -98,7 +101,6 @@ public class HomeActivity extends AppCompatActivity {
             homeAdapter.setOnClickListener(new HomeAdapter.OnItemClickListener() {
                 @Override
                 public Void deleteItem(int position) {
-                    Toast.makeText(HomeActivity.this, "" + transactions.get(position).getTransaction_id(), Toast.LENGTH_LONG).show();
                     transactionHelper.deleteTransaction(transactions.get(position).getTransaction_id());
                     transactions.remove(position);
                     homeAdapter.notifyItemRemoved(position);
@@ -118,4 +120,16 @@ public class HomeActivity extends AppCompatActivity {
         Toast.makeText(this, "" + userId, Toast.LENGTH_SHORT).show();
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_REPLY) {
+            if (resultCode == Activity.RESULT_OK) {
+                userId = data.getIntExtra("userid", 0);
+                user = userHelper.getUserData(userId);
+                String rupiah = (String.format("%,d", user.getBalance())).replace(',', '.');
+
+                nomimal.setText("Rp " + rupiah);
+            }
+        }
+    }
 }

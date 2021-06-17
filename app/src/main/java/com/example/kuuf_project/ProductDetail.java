@@ -61,7 +61,9 @@ public class ProductDetail extends Activity {
         pd_name.setText(product.getProduct_name());
         pd_minplayer.setText(String.valueOf(product.getMin_player()));
         pd_maxplayer.setText(String.valueOf(product.getMax_player()));
-        pd_price.setText(String.valueOf(product.getPrice()));
+        String rupiah = (String.format("%,d", product.getPrice())).replace(',', '.');
+
+        pd_price.setText("Rp " + rupiah);
         user = userHelper.getUserData(userid);
         phone_number = user.getPhone_number();
         sisawallet = user.getBalance();
